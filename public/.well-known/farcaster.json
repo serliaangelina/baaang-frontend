@@ -7,9 +7,9 @@
     "imageUrl": "https://baaang-frontend.vercel.app/banner.jpg",
     "splashImageUrl": "https://baaang-frontend.vercel.app/banner.jpg",
     "splashBackgroundColor": "#ea580c",
-    "subtitle": "Deploy Tokens to Clanker on Base",
+    "subtitle": "Deploy Tokens on Base",
     "description": "Deploy tokens instantly on Base with Clanker protocol",
-    "primaryCategory": "defi",
+    "primaryCategory": "finance",
     "tags": [
       "defi",
       "token",
