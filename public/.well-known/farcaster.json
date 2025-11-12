@@ -1,0 +1,22 @@
+{
+  "frame": {
+    "name": "BAAANG",
+    "version": "next",
+    "iconUrl": "https://your-domain.vercel.app/logo.jpg",
+    "homeUrl": "https://your-domain.vercel.app",
+    "imageUrl": "https://your-domain.vercel.app/banner.jpg",
+    "splashImageUrl": "https://your-domain.vercel.app/banner.jpg",
+    "splashBackgroundColor": "#ea580c",
+    "subtitle": "Deploy Tokens to Clanker on Base",
+    "description": "Deploy your own tokens instantly on Base network using Clanker protocol with custom rewards and pool configuration",
+    "primaryCategory": "defi",
+    "tags": [
+      "defi",
+      "token",
+      "clanker",
+      "base",
+      "deployment"
+    ],
+    "tagline": "BAAANG everything into Clanker"
+  }
+}

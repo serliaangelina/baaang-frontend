@@ -2,12 +2,43 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#ea580c" />
+    <title>BAAANG - Deploy Tokens to Clanker</title>
+    <meta name="description" content="Deploy your own tokens instantly on Base network using Clanker protocol" />
+
+    <meta property="fc:frame" content="vNext" />
+    <meta property="fc:frame:image" content="https://your-domain.vercel.app/banner.jpg" />
+    <meta property="fc:frame:button:1" content="Deploy Now" />
+    <meta property="fc:frame:button:1:action" content="link" />
+    <meta property="fc:frame:button:1:target" content="https://your-domain.vercel.app" />
+
+    <meta property="og:title" content="BAAANG - Deploy Tokens to Clanker" />
+    <meta property="og:description" content="Deploy your own tokens instantly on Base network using Clanker protocol with custom rewards and pool configuration" />
+    <meta property="og:image" content="https://your-domain.vercel.app/banner.jpg" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BAAANG - Deploy Tokens to Clanker" />
+    <meta name="twitter:description" content="Deploy your own tokens instantly on Base network using Clanker protocol" />
+    <meta name="twitter:image" content="https://your-domain.vercel.app/banner.jpg" />
+
     <link rel="icon" type="image/jpg" href="/logo.jpg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <title>Clanker Token Deployer</title>
+
+    <style>
+      @supports(padding: max(0px)) {
+        body {
+          padding-left: min(0vmin, env(safe-area-inset-left));
+          padding-right: min(0vmin, env(safe-area-inset-right));
+        }
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
