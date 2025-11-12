@@ -27,9 +27,16 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
     // First try to get Farcaster context (if in miniapp)
     try {
       const context = await sdk.context;
-      if (context?.user?.wallet?.address) {
-        setAddress(context.user.wallet.address as Address);
-        return;
+      if (context?.user) {
+        // Try to get wallet from SDK
+        const wallet = await sdk.wallet.ethProvider.request({
+          method: 'eth_accounts',
+        }) as string[];
+
+        if (wallet && wallet.length > 0) {
+          setAddress(wallet[0] as Address);
+          return;
+        }
       }
     } catch (err) {
       // Not in Farcaster miniapp, continue to check ethereum
@@ -150,13 +157,7 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
         throw new Error('Not in Farcaster miniapp environment');
       }
 
-      // Try to get wallet address from primary wallet
-      if (context.user.wallet?.address) {
-        setAddress(context.user.wallet.address as Address);
-        return;
-      }
-
-      // If no primary wallet, request wallet connection via SDK
+      // Request wallet connection via SDK
       const wallet = await sdk.wallet.ethProvider.request({
         method: 'eth_requestAccounts',
       }) as string[];
