@@ -16,15 +16,15 @@ export const WalletConnect = () => {
 
   if (isConnected && address) {
     return (
-      <div className="relative">
+      <div className="relative w-full md:w-auto">
         <button
           onClick={() => setShowModal(!showModal)}
-          className="bg-gradient-to-r from-flame-600 to-flame-500 hover:from-flame-700 hover:to-flame-600 text-white font-bold py-2 px-4 rounded-lg border-2 border-dark-900 shadow-md transition-all"
+          className="w-full md:w-auto bg-gradient-to-r from-flame-600 to-flame-500 hover:from-flame-700 hover:to-flame-600 text-white font-bold py-2.5 px-4 md:py-2 md:px-4 rounded-lg border-2 border-dark-900 shadow-md transition-all text-sm md:text-base"
         >
           {formatAddress(address)}
         </button>
         {showModal && (
-          <div className="absolute right-0 mt-2 w-64 bg-white border-2 border-dark-900 rounded-lg shadow-lg z-50">
+          <div className="absolute right-0 mt-2 w-full md:w-64 bg-white border-2 border-dark-900 rounded-lg shadow-lg z-50">
             <div className="p-4">
               <p className="text-sm text-dark-800 font-medium mb-2">Connected Address:</p>
               <p className="text-xs text-dark-900 font-mono break-all mb-4 bg-cream-100 p-2 rounded border border-dark-900">
@@ -51,7 +51,7 @@ export const WalletConnect = () => {
       <button
         onClick={() => setShowModal(true)}
         disabled={isConnecting}
-        className="bg-gradient-to-br from-flame-700 to-flame-500 hover:from-flame-800 hover:to-flame-600 text-white font-bold py-2 px-6 rounded-lg border-2 border-dark-900 shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full md:w-auto bg-gradient-to-br from-flame-700 to-flame-500 hover:from-flame-800 hover:to-flame-600 text-white font-bold py-2.5 px-6 md:py-2 md:px-6 rounded-lg border-2 border-dark-900 shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm md:text-base"
       >
         {isConnecting ? 'Connecting...' : 'Connect Wallet'}
       </button>
