@@ -1,4 +1,9 @@
 {
+  "accountAssociation": {
+    "header": "eyJmaWQiOjE0NjEzMzEsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHg2NUU0YjQyNkUyMjMyQThGZDRiRkM0REE2ZTI0YkU2QzIzMmZBNzU2In0",
+    "payload": "eyJkb21haW4iOiJiYWFhbmctZnJvbnRlbmQudmVyY2VsLmFwcCJ9",
+    "signature": "7C60mq5Tj7KPE+aHGGym73hqzeCLde2jcvYJNorbm1V1V4GDdh/FUBuTX6kbsuqlyXoJU42wJfsOytNqO6Qz9Bw="
+  },
   "frame": {
     "name": "BAAANG",
     "version": "next",
