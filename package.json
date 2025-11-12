@@ -10,6 +10,7 @@
   },
   "description": "Frontend for Clanker Token Deployer",
   "dependencies": {
+    "@farcaster/miniapp-sdk": "^0.2.1",
     "@vitejs/plugin-react": "^5.1.0",
     "@wagmi/connectors": "^6.1.4",
     "@wagmi/core": "^2.22.1",
