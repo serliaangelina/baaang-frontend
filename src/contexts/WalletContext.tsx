@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import { sdk } from '@farcaster/miniapp-sdk';
 import type { Address } from 'viem';
 
 interface WalletContextType {
@@ -23,6 +24,18 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const checkConnection = async () => {
+    // First try to get Farcaster context (if in miniapp)
+    try {
+      const context = await sdk.context;
+      if (context?.user?.wallet?.address) {
+        setAddress(context.user.wallet.address as Address);
+        return;
+      }
+    } catch (err) {
+      // Not in Farcaster miniapp, continue to check ethereum
+    }
+
+    // Fallback to standard ethereum provider
     if (typeof window.ethereum !== 'undefined') {
       try {
         const accounts = await window.ethereum.request({ method: 'eth_accounts' }) as string[];
@@ -129,23 +142,33 @@ export const WalletProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const connectFarcaster = async () => {
-    // Farcaster Frame wallet support
-    if (typeof window.ethereum !== 'undefined') {
-      // Try to connect using standard Ethereum provider
-      // Farcaster apps inject ethereum provider
-      try {
-        const accounts = await window.ethereum.request({
-          method: 'eth_requestAccounts',
-        }) as string[];
+    try {
+      // Get user context from Farcaster SDK
+      const context = await sdk.context;
 
-        if (accounts.length > 0) {
-          setAddress(accounts[0] as Address);
-        }
-      } catch (err) {
-        throw new Error('Failed to connect Farcaster wallet');
+      if (!context?.user) {
+        throw new Error('Not in Farcaster miniapp environment');
       }
-    } else {
-      throw new Error('No Farcaster wallet detected');
+
+      // Try to get wallet address from primary wallet
+      if (context.user.wallet?.address) {
+        setAddress(context.user.wallet.address as Address);
+        return;
+      }
+
+      // If no primary wallet, request wallet connection via SDK
+      const wallet = await sdk.wallet.ethProvider.request({
+        method: 'eth_requestAccounts',
+      }) as string[];
+
+      if (wallet && wallet.length > 0) {
+        setAddress(wallet[0] as Address);
+      } else {
+        throw new Error('No wallet found in Farcaster account');
+      }
+    } catch (err) {
+      console.error('Farcaster wallet error:', err);
+      throw new Error('Failed to connect Farcaster wallet. Make sure you have a wallet connected to your Farcaster account.');
     }
   };
 
